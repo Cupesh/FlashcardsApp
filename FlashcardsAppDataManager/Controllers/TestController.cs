@@ -11,7 +11,7 @@ namespace FlashcardsAppDataManager.Controllers
         [HttpGet("api/test")]
         public IActionResult Get()
         {
-            return Ok(new { name = "coop" });
+            return Ok(new { name = "coop", result = "all good" });
         }
     }
 }
