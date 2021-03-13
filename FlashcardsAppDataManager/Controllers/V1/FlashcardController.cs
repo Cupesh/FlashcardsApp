@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using FlashcardsAppDataManager.Models;
@@ -10,17 +11,22 @@ namespace FlashcardsAppDataManager.Controllers
     public class FlashcardController : Controller
     {
         private List<Flashcard> _flashcards;
-        public FlashcardController()
+        private Flashcard _flashcard;
+
+        private AppDb Db { get; set; }
+
+        public FlashcardController(AppDb db)
         {
-            _flashcards = new List<Flashcard>();
-            _flashcards.Add(new Flashcard { Id = 1, Term = "a", Definition = "aa" });
-            _flashcards.Add(new Flashcard { Id = 1, Term = "b", Definition = "bb" });
+            Db = db; 
         }
 
         [HttpGet("api/v1/flashcards")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetOne()
         {
-            return Ok(_flashcards);
+            await Db.Connection.OpenAsync();
+            var query = new FlashcardsQuery(Db);
+            var result = await query.GetAll();
+            return Ok(result);
         }
     }
 }

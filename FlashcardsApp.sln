@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashcardsApp.Android", "Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashcardsApp.iOS", "FlashcardsApp\FlashcardsApp.iOS\FlashcardsApp.iOS.csproj", "{C7C4F194-A4A6-465A-A219-9FDD9A31FB3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashcardsApp", "FlashcardsApp\FlashcardsApp\FlashcardsApp.csproj", "{61C73C69-0359-4339-B1A8-D60D82AF94F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashcardsApp", "FlashcardsApp\FlashcardsApp\FlashcardsApp.csproj", "{61C73C69-0359-4339-B1A8-D60D82AF94F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

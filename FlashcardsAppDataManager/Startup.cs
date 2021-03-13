@@ -48,6 +48,8 @@ namespace FlashcardsAppDataManager
                     }
                 });
             });
+
+            services.AddTransient<AppDb>(_ => new AppDb(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
