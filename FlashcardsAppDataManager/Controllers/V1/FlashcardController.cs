@@ -21,12 +21,28 @@ namespace FlashcardsAppDataManager.Controllers
         }
 
         [HttpGet("api/v1/flashcards")]
-        public async Task<IActionResult> GetOne()
+        public async Task<IActionResult> GetAll()
         {
             await Db.Connection.OpenAsync();
             var query = new FlashcardsQuery(Db);
-            var result = await query.GetAll();
+            var result = await query.RetrieveAll();
             return Ok(result);
+        }
+
+        [HttpGet("api/v1/flashcards/{id}")]
+        public async Task<IActionResult> GetOne(int id)
+        {
+            await Db.Connection.OpenAsync();
+            var query = new FlashcardsQuery(Db);
+            var result = await query.RetrieveOne(id);
+            if (result is null)
+            {
+                return new NotFoundResult();
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
     }
 }

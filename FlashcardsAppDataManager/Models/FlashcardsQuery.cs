@@ -17,7 +17,7 @@ namespace FlashcardsAppDataManager.Models
             Db = db;
         }
 
-        public async Task<List<Flashcard>> GetAll()
+        public async Task<List<Flashcard>> RetrieveAll()
         {
             using var cmd = Db.Connection.CreateCommand();
             cmd.CommandText = @"SELECT * FROM flashcards";
@@ -27,10 +27,10 @@ namespace FlashcardsAppDataManager.Models
             return result;
         }
 
-        public async Task<Flashcard> GetOne(int id)
+        public async Task<Flashcard> RetrieveOne(int id)
         {
             using var cmd = Db.Connection.CreateCommand();
-            cmd.CommandText = @"SELECT 'id', 'term', 'definition' FROM 'flashcards' WHERE 'id' = @id";
+            cmd.CommandText = @"SELECT id, term, definition FROM flashcards WHERE id = @id";
             cmd.Parameters.Add(new MySqlParameter
             {
                 ParameterName = "@id",
