@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FlashcardsApp.Views;
+using FlashcardsApp.ViewModels;
 
 namespace FlashcardsApp
 {
@@ -10,7 +12,7 @@ namespace FlashcardsApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new TestView(new TestViewModel());
         }
 
         protected override void OnStart()

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+  <PropertyChanged />
+</Weavers>
+<!--scans the assembly for any class that implements the INotifyPropertyChanged interface and adds
+the code needed to raise the PropertyChanged event-->
