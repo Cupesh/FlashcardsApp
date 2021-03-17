@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FlashcardsApp.Models
+﻿namespace FlashcardsApp.Models
 {
     public class Flashcard
     {

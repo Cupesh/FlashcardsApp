@@ -7,8 +7,6 @@ namespace FlashcardsApp.ViewModels
     // taking the Navigation dependency of xamarin.forms off of the other viewmodels class
     public abstract class ViewModel : INotifyPropertyChanged
     {
-        public INavigation Navigation { get; set; }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void RaisePropertyChanged(params string[] propertyNames)
@@ -18,5 +16,7 @@ namespace FlashcardsApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public INavigation Navigation { get; set; }
     }
 }

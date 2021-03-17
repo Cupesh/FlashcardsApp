@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FlashcardsApp.Views;
-using FlashcardsApp.ViewModels;
 
 namespace FlashcardsApp
 {
@@ -12,7 +11,7 @@ namespace FlashcardsApp
         {
             InitializeComponent();
 
-            MainPage = new TestView(new TestViewModel());
+            MainPage = new NavigationPage(Resolver.Resolve<TestView>());
         }
 
         protected override void OnStart()

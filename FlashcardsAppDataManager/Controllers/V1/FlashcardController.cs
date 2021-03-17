@@ -25,8 +25,8 @@ namespace FlashcardsAppDataManager.Controllers
         {
             await Db.Connection.OpenAsync();
             var query = new FlashcardsQuery(Db);
-            var result = await query.RetrieveAll();
-            return Ok(result);
+            _flashcards = await query.RetrieveAll();
+            return Ok(_flashcards);
         }
 
         [HttpGet("api/v1/flashcards/{id}")]
@@ -34,14 +34,14 @@ namespace FlashcardsAppDataManager.Controllers
         {
             await Db.Connection.OpenAsync();
             var query = new FlashcardsQuery(Db);
-            var result = await query.RetrieveOne(id);
-            if (result is null)
+            _flashcard = await query.RetrieveOne(id);
+            if (_flashcard is null)
             {
                 return new NotFoundResult();
             }
             else
             {
-                return Ok(result);
+                return Ok(_flashcard);
             }
         }
     }

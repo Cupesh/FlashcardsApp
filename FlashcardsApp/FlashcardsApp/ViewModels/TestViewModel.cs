@@ -3,24 +3,27 @@ using FlashcardsApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FlashcardsApp.ViewModels
 {
     public class TestViewModel : ViewModel
     {
-        private Flashcard flashcard;
-        private WebAPIService _webAPIService;
+        private IWebAPIService _webAPIService;
 
-        public TestViewModel()
+        public Flashcard Flashcard { get; set; }
+
+        public TestViewModel(IWebAPIService webAPIService)
         {
-            _webAPIService = new WebAPIService();
-            GetData();
+            _webAPIService = webAPIService;
+            Task.Run(async () => await GetData());
         }
 
-        private async void GetData()
+        private async Task GetData()
         {
-            flashcard = await _webAPIService.GetFlashcardAsync();
+            var item = await _webAPIService.GetFlashcardAsync();
+
         }
     }
 }

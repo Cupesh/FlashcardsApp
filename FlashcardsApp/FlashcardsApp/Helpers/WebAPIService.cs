@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FlashcardsApp.Helpers
 {
-    public class WebAPIService
+    public class WebAPIService : IWebAPIService
     {
         private HttpClient apiClient { get; set; }
 
@@ -21,7 +21,7 @@ namespace FlashcardsApp.Helpers
         private void InitializeClient()
         {
             apiClient = new HttpClient();
-            apiClient.BaseAddress = new Uri("http://localhost:56289/");
+            apiClient.BaseAddress = new Uri("http://172.17.230.145:44313/");
             apiClient.DefaultRequestHeaders.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
