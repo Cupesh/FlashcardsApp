@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace FlashcardsApp.ViewModels
 {
-    // .
+    // ..
     public class TestViewModel : ViewModel
     {
         private IWebAPIService _webAPIService;
