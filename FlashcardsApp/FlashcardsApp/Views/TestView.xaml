@@ -6,8 +6,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!" />
-            <Label Text="{Binding Item.Term}" />
-            <Label Text="{Binding Item.Definition}" />
+            <Label Text="{Binding Flashcard.Term}" />
+            <Label Text="{Binding Flashcard.Definition}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
