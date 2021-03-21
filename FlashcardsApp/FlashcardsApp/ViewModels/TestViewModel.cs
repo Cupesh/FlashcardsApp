@@ -23,7 +23,6 @@ namespace FlashcardsApp.ViewModels
         private async Task GetData()
         {
             Item = await _webAPIService.GetFlashcardAsync();
-
         }
     }
 }
