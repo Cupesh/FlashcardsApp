@@ -21,17 +21,20 @@ namespace FlashcardsApp.Helpers
         private void InitializeClient()
         {
             apiClient = new HttpClient();
-            apiClient.BaseAddress = new Uri("http://172.17.230.145:44313/");
+            apiClient.BaseAddress = new Uri("http://192.168.1.81:45456/");
             apiClient.DefaultRequestHeaders.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<Flashcard> GetFlashcardAsync()
         {
+            Console.WriteLine("1");
             using (HttpResponseMessage response = await apiClient.GetAsync("/api/v1/flashcards/1"))
             {
+                Console.WriteLine("2");
                 if (response.IsSuccessStatusCode)
                 {
+                    Console.WriteLine("3");
                     var content = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<Flashcard>(content);
                     return result;

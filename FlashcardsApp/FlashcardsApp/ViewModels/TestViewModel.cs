@@ -12,7 +12,7 @@ namespace FlashcardsApp.ViewModels
     {
         private IWebAPIService _webAPIService;
 
-        public Flashcard Flashcard { get; set; }
+        public Flashcard Item { get; set; }
 
         public TestViewModel(IWebAPIService webAPIService)
         {
@@ -22,7 +22,7 @@ namespace FlashcardsApp.ViewModels
 
         private async Task GetData()
         {
-            var item = await _webAPIService.GetFlashcardAsync();
+            Item = await _webAPIService.GetFlashcardAsync();
 
         }
     }
