@@ -1,17 +1,17 @@
 ﻿using FlashcardsApp.Helpers;
 using FlashcardsApp.Models;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace FlashcardsApp.ViewModels
 {
-    // ..
-    public class TestViewModel : ViewModel
+    public class MainMenuViewModel
     {
         private IWebAPIService _webAPIService;
 
-        private Flashcard Flashcard { get; set; }
+        private ObservableCollection<Module> Modules { get; set; }
 
-        public TestViewModel(IWebAPIService webAPIService)
+        public MainMenuViewModel(IWebAPIService webAPIService)
         {
             _webAPIService = webAPIService;
             Task.Run(async () => await GetData());
@@ -19,7 +19,7 @@ namespace FlashcardsApp.ViewModels
 
         private async Task GetData()
         {
-            Flashcard = await _webAPIService.GetFlashcardAsync();
+            Modules = new ObservableCollection<Module>(await _webAPIService.GetAllModulesAsync());
         }
     }
 }
