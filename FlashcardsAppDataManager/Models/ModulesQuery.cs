@@ -35,8 +35,8 @@ namespace FlashcardsAppDataManager.Models
                 {
                     var module = new Module(Db)
                     {
-                        ModuleCode = reader.GetString(1),
-                        Name = reader.GetString(2)
+                        ModuleCode = reader.GetString(0),
+                        Name = reader.GetString(1)
                     };
                     modules.Add(module);
                 }
