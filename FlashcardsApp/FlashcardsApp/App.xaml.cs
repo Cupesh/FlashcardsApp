@@ -11,7 +11,7 @@ namespace FlashcardsApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(Resolver.Resolve<TestView>());
+            MainPage = new NavigationPage(Resolver.Resolve<MainMenuView>());
         }
 
         protected override void OnStart()
