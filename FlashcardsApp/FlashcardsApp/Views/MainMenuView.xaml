@@ -6,7 +6,8 @@
     <StackLayout>
         <ListView x:Name="ModuleListView"
                   RowHeight="80"
-                  ItemsSource="{Binding Modules}">
+                  ItemsSource="{Binding Modules}"
+                  SelectedItem="{Binding SelectedModule}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

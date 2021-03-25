@@ -28,7 +28,7 @@ namespace FlashcardsApp
                 ContainerBuilder.RegisterType(type.AsType());
             }
 
-            ContainerBuilder.RegisterType<WebAPIService>().As<IWebAPIService>().InstancePerLifetimeScope();
+            ContainerBuilder.RegisterType<WebAPIService>().As<IWebAPIService>().SingleInstance();
         }
 
         private void FinishInitialization()
