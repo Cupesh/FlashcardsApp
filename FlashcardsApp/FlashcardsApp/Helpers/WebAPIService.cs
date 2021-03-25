@@ -21,7 +21,7 @@ namespace FlashcardsApp.Helpers
         private void InitializeClient()
         {
             apiClient = new HttpClient();
-            apiClient.BaseAddress = new Uri("http://192.168.1.81:45456/");
+            apiClient.BaseAddress = new Uri("http://192.168.1.81:45461/");
             apiClient.DefaultRequestHeaders.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
