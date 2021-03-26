@@ -13,32 +13,26 @@ namespace FlashcardsApp.ViewModels
     {
         private IWebAPIService _webAPIService;
         
-        //public ObservableCollection<ModuleBlock> ModuleBlocks { get; set; }
+        public ObservableCollection<ModuleBlock> ModuleBlocks { get; set; }
 
-        //public Module Module { get; set; }
+        public Module Module { get; set; }
+
+        public void Initialize(Module module)
+        {
+            Module = module;
+            Task.Run(async () => await GetData(Module));
+        }
 
         public ModuleBlockViewModel(IWebAPIService webAPIService)
         {
             _webAPIService = webAPIService;
-            //ModuleBlocks = new ObservableCollection<ModuleBlock>();
-
-            //GetData(Module);
+            ModuleBlocks = new ObservableCollection<ModuleBlock>();
         }
 
-        //private void GetData(Module module)
-        //{
-        //    string moduleCode = module.ModuleCode;
-
-        //    for (var i = 0; i < 3; i++)
-        //    {
-        //        ModuleBlocks.Add(new ModuleBlock
-        //        {
-        //            Id = i,
-        //            ModuleCode = moduleCode,
-        //            Number = i,
-        //            Name = String.Format("Block {0}, part of {1}", i, moduleCode)
-        //        });
-        //    }
-        //}
+        private async Task GetData(Module module)
+        {
+            // todo: finish method in Helpers/IWebAPISerivce
+            ModuleBlocks = await _webAPIService 
+        }
     }
 }

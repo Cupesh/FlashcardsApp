@@ -42,9 +42,10 @@ namespace FlashcardsApp.ViewModels
                 return;
             }
 
-            var subMenu = new NavigationPage(Resolver.Resolve<ModuleBlockView>());
+            var subMenu = Resolver.Resolve<ModuleBlockView>();
+            ((ModuleBlockViewModel)subMenu.BindingContext).Initialize(selectedModule);
 
-            await Navigation.PushAsync(subMenu);
+            await Navigation.PushAsync(new NavigationPage(subMenu));
         }
     }
 }
