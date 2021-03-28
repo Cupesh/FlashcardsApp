@@ -20,7 +20,7 @@ namespace FlashcardsApp.ViewModels
         public void Initialize(Module module)
         {
             Module = module;
-            Task.Run(async () => await GetData(Module));
+            Task.Run(async () => await GetData());
         }
 
         public ModuleBlockViewModel(IWebAPIService webAPIService)
@@ -29,9 +29,9 @@ namespace FlashcardsApp.ViewModels
             ModuleBlocks = new ObservableCollection<ModuleBlock>();
         }
 
-        private async Task GetData(Module module)
+        private async Task GetData()
         {
-            string moduleCode = module.ModuleCode;
+            string moduleCode = Module.ModuleCode;
             ModuleBlocks = await _webAPIService.GetModuleBlocksAsync(moduleCode); 
         }
     }

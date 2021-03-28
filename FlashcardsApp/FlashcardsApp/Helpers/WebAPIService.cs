@@ -62,7 +62,7 @@ namespace FlashcardsApp.Helpers
 
         public async Task<ObservableCollection<ModuleBlock>> GetModuleBlocksAsync(string moduleCode)
         {
-            using (HttpResponseMessage response = await apiClient.GetAsync("/api/v1/moduleblocks/{moduleCode}"))
+            using (HttpResponseMessage response = await apiClient.GetAsync(String.Format("/api/v1/moduleblocks/{0}", moduleCode)))
             {
                 if (response.IsSuccessStatusCode)
                 {

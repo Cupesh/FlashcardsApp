@@ -12,6 +12,8 @@ namespace FlashcardsApp.Views
             InitializeComponent();
             viewModel.Navigation = Navigation;
             BindingContext = viewModel;
+
+            ModuleListView.ItemSelected += (s, e) => ModuleListView.SelectedItem = null;
         }
     }
 }

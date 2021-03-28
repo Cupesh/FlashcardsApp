@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,10 +17,16 @@ namespace FlashcardsAppDataManager.Models
             Db = db;
         }
 
-        public async Task<List<ModuleBlock>> RetrieveAll(string moduleCode)
+        public async Task<List<ModuleBlock>> RetrieveAll(string module_code)
         {
             using var cmd = Db.Connection.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM modules WHERE module_code = @moduleCode" ;
+            cmd.CommandText = @"SELECT id, module_code, number, name FROM module_blocks WHERE module_code = @module_code" ;
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@module_code",
+                DbType = DbType.Int32,
+                Value = module_code
+            });
 
             var result = await ReadAll(await cmd.ExecuteReaderAsync());
 
@@ -35,9 +43,10 @@ namespace FlashcardsAppDataManager.Models
                 {
                     var moduleBlock = new ModuleBlock(Db)
                     {
-                        ModuleCode = reader.GetString(0),
-                        Number = reader.GetInt32(1),
-                        Name = reader.GetString(2)
+                        Id = reader.GetInt32(0),
+                        ModuleCode = reader.GetString(1),
+                        Number = reader.GetInt32(2),
+                        Name = reader.GetString(3)
                     };
                     moduleBlocks.Add(moduleBlock);
                 }
