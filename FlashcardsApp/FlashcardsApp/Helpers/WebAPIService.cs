@@ -45,13 +45,10 @@ namespace FlashcardsApp.Helpers
 
         public async Task<ObservableCollection<Module>> GetAllModulesAsync()
         {
-            Console.WriteLine("1");
             using (HttpResponseMessage response = await apiClient.GetAsync("/api/v1/modules/"))
             {
-                Console.WriteLine("2");
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("3");
                     var content = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<ObservableCollection<Module>>(content);
                     return result;
@@ -63,5 +60,21 @@ namespace FlashcardsApp.Helpers
             }
         }
 
+        public async Task<ObservableCollection<ModuleBlock>> GetModuleBlocksAsync(string moduleCode)
+        {
+            using (HttpResponseMessage response = await apiClient.GetAsync("/api/v1/moduleblocks/{moduleCode}"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<ObservableCollection<ModuleBlock>>(content);
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }

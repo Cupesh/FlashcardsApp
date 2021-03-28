@@ -31,8 +31,8 @@ namespace FlashcardsApp.ViewModels
 
         private async Task GetData(Module module)
         {
-            // todo: finish method in Helpers/IWebAPISerivce
-            ModuleBlocks = await _webAPIService 
+            string moduleCode = module.ModuleCode;
+            ModuleBlocks = await _webAPIService.GetModuleBlocksAsync(moduleCode); 
         }
     }
 }
