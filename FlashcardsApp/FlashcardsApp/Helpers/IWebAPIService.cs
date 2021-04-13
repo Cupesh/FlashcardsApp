@@ -9,5 +9,7 @@ namespace FlashcardsApp.Helpers
         Task<Flashcard> GetFlashcardAsync();
         Task<ObservableCollection<Module>> GetAllModulesAsync();
         Task<ObservableCollection<ModuleBlock>> GetModuleBlocksAsync(string moduleCode);
+
+        Task<ObservableCollection<BlockPart>> GetBlockPartsAsync(string moduleCodeId);
     }
 }

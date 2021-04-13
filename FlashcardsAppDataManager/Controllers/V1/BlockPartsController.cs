@@ -17,12 +17,12 @@ namespace FlashcardsAppDataManager.Controllers.V1
             Db = db;
         }
 
-        [HttpGet("api/v1/moduleblocks/{moduleCode}")]
-        public async Task<IActionResult> GetAll(string moduleCode)
+        [HttpGet("api/v1/blockparts/{moduleBlockId}")]
+        public async Task<IActionResult> GetAll(int moduleBlockId)
         {
             await Db.Connection.OpenAsync();
-            var query = new BlockPartsController(Db);
-            _moduleBlocks = await query.RetrieveAll(moduleCode);
+            var query = new BlockPartsQuery(Db);
+            _moduleBlocks = await query.RetrieveAll(moduleBlockId);
             return Ok(_moduleBlocks);
         }
     }
