@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlashcardsAppDataManager.Controllers.V1
 {
+    // Second submenu. Displays parts/chapters of the selected module block Id.
     public class BlockPartsController : Controller
     {
         private List<BlockPart> _moduleBlocks;
@@ -17,6 +18,7 @@ namespace FlashcardsAppDataManager.Controllers.V1
             Db = db;
         }
 
+        // Exposed endpoint
         [HttpGet("api/v1/blockparts/{moduleBlockId}")]
         public async Task<IActionResult> GetAll(int moduleBlockId)
         {

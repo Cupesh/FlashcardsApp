@@ -15,6 +15,7 @@ namespace FlashcardsAppDataManager.Models
             Db = db;
         }
 
+        // Called from the controller
         public async Task<List<Module>> RetrieveAll()
         {
             using var cmd = Db.Connection.CreateCommand();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlashcardsAppDataManager.Controllers.V1
 {
+    // The current main menu controller. Displays all modules which have flashcards created for them
     public class ModulesController : Controller
     {
         private List<Module> _modules;
@@ -18,6 +19,7 @@ namespace FlashcardsAppDataManager.Controllers.V1
             Db = db;
         }
 
+        // Exposed endpoint
         [HttpGet("api/v1/modules")]
         public async Task<IActionResult> GetAll()
         {
