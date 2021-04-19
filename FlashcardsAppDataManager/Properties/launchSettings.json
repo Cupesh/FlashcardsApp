@@ -2,8 +2,12 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/FlashcardsAppDataManager",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:56289",
+      "applicationUrl": "http://localhost:50000",
       "sslPort": 0
     }
   },
@@ -12,7 +16,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/v1/flashcards",
+      "launchUrl": "api/v1/modules",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

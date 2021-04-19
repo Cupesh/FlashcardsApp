@@ -13,6 +13,8 @@ namespace FlashcardsApp.Views
             InitializeComponent();
             viewModel.Navigation = Navigation;
             BindingContext = viewModel;
+
+            ModuleBlockListView.ItemSelected += (s, e) => ModuleBlockListView.SelectedItem = null;
         }
     }
 }

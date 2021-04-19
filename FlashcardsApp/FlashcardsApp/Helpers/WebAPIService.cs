@@ -21,7 +21,7 @@ namespace FlashcardsApp.Helpers
         private void InitializeClient()
         {
             apiClient = new HttpClient();
-            apiClient.BaseAddress = new Uri("http://192.168.1.81:45455/");
+            apiClient.BaseAddress = new Uri("http://192.168.1.108:45457/");
             apiClient.DefaultRequestHeaders.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -68,6 +68,23 @@ namespace FlashcardsApp.Helpers
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<ObservableCollection<ModuleBlock>>(content);
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        public async Task<ObservableCollection<BlockPart>> GetBlockPartsAsync(string moduleBlockId)
+        {
+            using (HttpResponseMessage response = await apiClient.GetAsync(String.Format("/api/v1/blockparts/{0}", moduleBlockId)))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<ObservableCollection<BlockPart>>(content);
                     return result;
                 }
                 else
