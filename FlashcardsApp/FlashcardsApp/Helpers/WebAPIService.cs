@@ -21,26 +21,9 @@ namespace FlashcardsApp.Helpers
         private void InitializeClient()
         {
             apiClient = new HttpClient();
-            apiClient.BaseAddress = new Uri("http://192.168.1.108:45457/");
+            apiClient.BaseAddress = new Uri("https://flashcardsappdatamanager.conveyor.cloud/");
             apiClient.DefaultRequestHeaders.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
-        public async Task<Flashcard> GetFlashcardAsync()
-        {
-            using (HttpResponseMessage response = await apiClient.GetAsync("/api/v1/flashcards/1"))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<Flashcard>(content);
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
         }
 
         public async Task<ObservableCollection<Module>> GetAllModulesAsync()

@@ -6,7 +6,6 @@ namespace FlashcardsApp.Helpers
 {
     public interface IWebAPIService
     {
-        Task<Flashcard> GetFlashcardAsync();
         Task<ObservableCollection<Module>> GetAllModulesAsync();
         Task<ObservableCollection<ModuleBlock>> GetModuleBlocksAsync(string moduleCode);
         Task<ObservableCollection<BlockPart>> GetBlockPartsAsync(string moduleCodeId);
