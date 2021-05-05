@@ -1,10 +1,12 @@
 ﻿using FlashcardsApp.Helpers;
 using FlashcardsApp.Models;
+using FlashcardsApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace FlashcardsApp.ViewModels
 {
@@ -19,7 +21,7 @@ namespace FlashcardsApp.ViewModels
             get { return null; }
             set
             {
-                throw new NotImplementedException();
+                Device.BeginInvokeOnMainThread(async () => await NavigateToFlashcards(value));
             }
         }
 
@@ -39,6 +41,19 @@ namespace FlashcardsApp.ViewModels
         {
             string moduleBlockId = ModuleBlock.Id.ToString();
             BlockParts = await _webAPIService.GetBlockPartsAsync(moduleBlockId);
+        }
+
+        private async Task NavigateToFlashcards(BlockPart selectedBlockPart)
+        {
+            if (selectedBlockPart == null)
+            {
+                return;
+            }
+
+            var subMenu = Resolver.Resolve<FlashcardsView>();
+            ((FlashcardsViewModel)subMenu.BindingContext).Initialize(selectedBlockPart);
+
+            await Navigation.PushAsync(new NavigationPage(subMenu));
         }
     }
 }
