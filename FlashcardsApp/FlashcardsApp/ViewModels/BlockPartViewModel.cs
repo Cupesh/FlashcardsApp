@@ -53,7 +53,7 @@ namespace FlashcardsApp.ViewModels
             var subMenu = Resolver.Resolve<FlashcardsView>();
             ((FlashcardsViewModel)subMenu.BindingContext).Initialize(selectedBlockPart);
 
-            await Navigation.PushAsync(new NavigationPage(subMenu));
+            await Navigation.PushModalAsync(subMenu);
         }
     }
 }
