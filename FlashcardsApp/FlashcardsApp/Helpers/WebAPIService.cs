@@ -76,5 +76,22 @@ namespace FlashcardsApp.Helpers
                 }
             }
         }
+
+        public async Task<ObservableCollection<Flashcard>> GetFlashcardsAsync(string selectedBlockPartId)
+        {
+            using (HttpResponseMessage response = await apiClient.GetAsync(String.Format("/api/v1/flashcards/{0}", selectedBlockPartId)))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<ObservableCollection<Flashcard>>(content);
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }
