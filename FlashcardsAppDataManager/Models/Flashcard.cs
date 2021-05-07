@@ -1,4 +1,9 @@
-﻿namespace FlashcardsApp.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FlashcardsAppDataManager.Models
 {
     public class Flashcard
     {

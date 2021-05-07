@@ -15,6 +15,7 @@ namespace FlashcardsApp.ViewModels
         private IWebAPIService _webAPIService;
 
         public ObservableCollection<BlockPart> BlockParts { get; set; }
+        public ObservableCollection<Flashcard> Flashcards { get; set; }
         public ModuleBlock ModuleBlock { get; set; }
         public BlockPart SelectedBlockPart
         {
@@ -50,10 +51,18 @@ namespace FlashcardsApp.ViewModels
                 return;
             }
 
+            var flashcards = Task.Run(async () => await GetFlashcards());
+
             var subMenu = Resolver.Resolve<FlashcardsView>();
             ((FlashcardsViewModel)subMenu.BindingContext).Initialize(selectedBlockPart);
 
             await Navigation.PushModalAsync(subMenu);
+        }
+
+        private async Task GetFlashcards()
+        {
+            string selectedBlockPartId = SelectedBlockPart.Id.ToString();
+            Flashcards = await _webAPIService.GetFlashcardsAsync(selectedBlockPartId);
         }
     }
 }
