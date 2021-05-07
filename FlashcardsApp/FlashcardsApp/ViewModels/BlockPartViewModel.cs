@@ -51,10 +51,10 @@ namespace FlashcardsApp.ViewModels
                 return;
             }
 
-            var flashcards = Task.Run(async () => await GetFlashcards());
+            await Task.Run(async () => await GetFlashcards());
 
             var subMenu = Resolver.Resolve<FlashcardsView>();
-            ((FlashcardsViewModel)subMenu.BindingContext).Initialize(selectedBlockPart);
+            ((FlashcardsViewModel)subMenu.BindingContext).Initialize(Flashcards);
 
             await Navigation.PushModalAsync(subMenu);
         }

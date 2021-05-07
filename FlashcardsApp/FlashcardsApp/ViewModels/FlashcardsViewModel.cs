@@ -2,17 +2,18 @@
 using FlashcardsApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace FlashcardsApp.ViewModels
 {
     public class FlashcardsViewModel : ViewModel
     {
-        public BlockPart BlockPart { get; set; }
+        public ObservableCollection<Flashcard> Flashcards { get; set; }
 
-        public void Initialize(BlockPart blockPart)
+        public void Initialize(ObservableCollection<Flashcard> flashcards)
         {
-            BlockPart = blockPart;
+            Flashcards = flashcards;
         }
     }
 }
